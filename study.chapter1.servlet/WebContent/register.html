@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>会員登録</title>
+<style type="text/css">
+	#regbox {
+		width:300px;
+	}
+	#regbox  label{
+		display : block;
+		width : 100px;
+		float : left;
+	}
+</style>
+</head>
+<body>
+	<form method="get" action="register">
+		<fieldset id ="regbox">
+			<legend>会員情報入力</legend>
+			<label for = "id" > ID</label><input type = "text" name="id"/><br/>
+			<label for = "pwd" > パスワード</label><input type = "text" name="pwd"/><br/>
+			<label for = "email" > メール</label><input type = "text" name="email"/><br/>
+			<input type="submit" value="登録"/>
+			<input type="reset" value="キャンセル"/>
+		</fieldset>
+	</form>
+</body>
+</html>
