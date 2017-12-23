@@ -12,7 +12,7 @@
 
   <servlet>
     <servlet-name>hello</servlet-name>
-    <servlet-class>com.google.classroom.chapter1.study.servlet.HelloServlet</servlet-class>
+    <servlet-class>com.google.classroom.chapter1.study.servlet.example.HelloServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>hello</servlet-name>
