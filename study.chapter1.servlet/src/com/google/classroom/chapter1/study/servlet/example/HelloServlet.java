@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
  * @author : choi.ki.duc
  *
  */
-@SuppressWarnings("serial")
 public class HelloServlet extends HttpServlet {
 
     // 原則サーブレット・クラスは doGetまたは、doPostのみ作成とする。
     // コンテナーが生成下 Request、Responseオブジェクトを受け取ることを担う。
+	@Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html; charset=UTF-8");
 
