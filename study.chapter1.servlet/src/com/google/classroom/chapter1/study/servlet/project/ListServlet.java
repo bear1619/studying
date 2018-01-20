@@ -13,20 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class RegisterServlet extends HttpServlet {
+public class ListServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// パラメーター受取
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
-		String familyName = request.getParameter("familyName");
-		String givenName = request.getParameter("givenName");
-		String email = request.getParameter("email");
-
-		addMember(id, pwd, familyName, givenName, email);
 
 		// 結果を返す
 		response.setContentType("text/html;charset=utf-8");
@@ -34,20 +27,22 @@ public class RegisterServlet extends HttpServlet {
 		pw.println("<html>");
 		pw.println("<head></head>");
 		pw.println("<body>");
-
-		if (id.equals("errorUser")) {
-			pw.println("IDに問題があります！！失敗<br/>");
-			pw.println("<a href='javascript:history.go(-1)'>前へ</a>");
-		} else {
-			pw.println(familyName + " " + givenName + "様! 登録ありがとうございます。<br/>");
-		}
+		pw.println("<table border='1' cellspacing='0'>");
+		pw.println("<tr>");
+		pw.println("<th>ID</th>");
+		pw.println("<th>姓</th>");
+		pw.println("<th>名</th>");
+		pw.println("<th>eメール</th>");
+		pw.println("</tr>");
+		pw = selectMember(pw);
 		pw.println("</body>");
 		pw.println("</html>");
 	}
 
-	private void addMember(String id, String pwd, String familyName, String givenName, String email) {
+	private PrintWriter selectMember(PrintWriter pw) {
 		Connection connection;
 		Statement statement;
+		ResultSet rs = null;
 		String sql;
 		String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
 		String databaseID = "test";
@@ -60,9 +55,26 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			connection = DriverManager.getConnection(jdbcUrl, databaseID, databasePW);
 			statement = connection.createStatement();
-			sql = "INSERT INTO MEMBER (ID, PASSWORD, FAMILY_NAME, GIVEN_NAME, EMAIL) VALUES ('"
-			+ id + "',password('" + pwd + "'),'" + familyName + "','" + givenName + "','" + email + "')";
-			statement.executeUpdate(sql);
+			sql = "SELECT * FROM MEMBER";
+			rs = statement.executeQuery(sql);
+			if (rs.next()) {
+				do {
+				    String id = rs.getString("ID");
+				    String family_name = rs.getString("family_name");
+				    String given_name = rs.getString("given_name");
+				    String email = rs.getString("email");
+				    pw.println("<tr>");
+				    pw.println("<td>" + id + "</td>");
+				    pw.println("<td>" + family_name + "</td>");
+				    pw.println("<td>" + given_name + "</td>");
+				    pw.println("<td>" + email + "</td>");
+				    pw.println("</tr>");
+				} while (rs.next());
+			} else {
+			    pw.println("<tr>");
+			    pw.println("<td colspan='4'>登録情報が存在しません。</td>");
+			    pw.println("</tr>");
+			}
 			statement.close();
 			connection.close();
 		} catch (SQLException e) {
@@ -70,5 +82,6 @@ public class RegisterServlet extends HttpServlet {
 		} catch (Exception e) {
 			System.err.println("Error : " + e);
 		}
+		return pw;
 	}
 }
