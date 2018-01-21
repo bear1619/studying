@@ -35,4 +35,12 @@
 		<servlet-name>list</servlet-name>
 		<url-pattern>/list</url-pattern>
 	</servlet-mapping>
+    <servlet>
+		<servlet-name>main</servlet-name>
+		<servlet-class>com.google.classroom.chapter1.study.servlet.project.MainServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>main</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
 </web-app>

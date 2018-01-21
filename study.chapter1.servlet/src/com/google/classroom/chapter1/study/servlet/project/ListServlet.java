@@ -18,8 +18,6 @@ public class ListServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// パラメーター受取
-		request.setCharacterEncoding("UTF-8");
 
 		// 結果を返す
 		response.setContentType("text/html;charset=utf-8");
