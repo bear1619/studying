@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
- <display-name>hello</display-name>
+  <display-name>hello</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -8,8 +8,9 @@
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
+    <welcome-file>main.html</welcome-file>
+    <welcome-file>main.jsp</welcome-file>
   </welcome-file-list>
-
   <servlet>
     <servlet-name>hello</servlet-name>
     <servlet-class>com.google.classroom.chapter1.study.servlet.example.HelloServlet</servlet-class>
@@ -18,21 +19,28 @@
     <servlet-name>hello</servlet-name>
     <url-pattern>/hello</url-pattern>
   </servlet-mapping>
-
   <servlet>
-		<servlet-name>register</servlet-name>
-		<servlet-class>com.google.classroom.chapter1.study.servlet.project.RegisterServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>register</servlet-name>
-		<url-pattern>/register</url-pattern>
-	</servlet-mapping>
-	  <servlet>
-		<servlet-name>list</servlet-name>
-		<servlet-class>com.google.classroom.chapter1.study.servlet.project.ListServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>list</servlet-name>
-		<url-pattern>/list</url-pattern>
-	</servlet-mapping>
+    <servlet-name>main</servlet-name>
+    <servlet-class>com.google.classroom.chapter1.study.servlet.example.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>main</servlet-name>
+    <url-pattern></url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>register</servlet-name>
+    <servlet-class>com.google.classroom.chapter1.study.servlet.project.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>register</servlet-name>
+    <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>list</servlet-name>
+    <servlet-class>com.google.classroom.chapter1.study.servlet.project.ListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>list</servlet-name>
+    <url-pattern>/list</url-pattern>
+  </servlet-mapping>
 </web-app>
