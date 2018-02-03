@@ -25,7 +25,8 @@ public class DeleteServlet extends HttpServlet {
     String id = request.getParameter("id");
     PrintWriter pw = response.getWriter();
     Connection connection = null;
-    String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
+    String jdbcUrl = "jdbc:mysql://localhost:3306/testdb"
+        + "?verifyServerCertificate=false&amp;useSSL=true";
     String databaseId = "test";
     String databasePw = "1234";
 
@@ -38,7 +39,7 @@ public class DeleteServlet extends HttpServlet {
     try {
       connection = DriverManager.getConnection(jdbcUrl, databaseId, databasePw);
 
-      String sql = "delete from members where id=?";
+      String sql = "delete from member where id=?";
       pstmt = connection.prepareStatement(sql);
       pstmt.setString(1, id);
       n = pstmt.executeUpdate();
