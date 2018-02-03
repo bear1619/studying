@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.classroom.chapter1.study.util.SwagUtil;
+
 public class DeleteServlet extends HttpServlet {
 
   @Override
@@ -57,11 +59,10 @@ public class DeleteServlet extends HttpServlet {
     if (n > 0) {
       response.sendRedirect("list.do");
     } else {
-      pw.println("<html>");
-      pw.println("<head></head>");
+      SwagUtil.createCommonHeader(pw);
       pw.println("<body>");
-      pw.println("회원삭제에 실패했습니다. ");
-      pw.println("<a href='javascript:history.go(-1)'>이전페이지로 가기</a>");
+      pw.println("削除に失敗しました");
+      pw.println("<a href='javascript:history.go(-1)'>前のページ戻る</a>");
       pw.println("</body>");
       pw.println("</html>");
       pw.close();

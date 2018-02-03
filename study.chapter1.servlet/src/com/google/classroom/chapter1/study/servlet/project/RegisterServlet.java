@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.classroom.chapter1.study.util.SwagUtil;
+
 public class RegisterServlet extends HttpServlet {
 
   @Override
@@ -30,8 +32,7 @@ public class RegisterServlet extends HttpServlet {
     // 結果を返す
     response.setContentType("text/html;charset=utf-8");
     PrintWriter pw = response.getWriter();
-    pw.println("<html>");
-    pw.println("<head></head>");
+    SwagUtil.createCommonHeader(pw);
     pw.println("<body>");
 
     if (id.equals("errorUser")) {
@@ -39,6 +40,7 @@ public class RegisterServlet extends HttpServlet {
       pw.println("<a href='javascript:history.go(-1)'>前へ</a>");
     } else {
       pw.println(familyName + " " + givenName + "様! 登録ありがとうございます。<br/>");
+      pw.println("<a href='http://localhost:9080/study/main'>メインへ</a>");
     }
     pw.println("</body>");
     pw.println("</html>");
