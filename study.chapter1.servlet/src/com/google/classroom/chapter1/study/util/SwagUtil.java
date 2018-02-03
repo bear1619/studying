@@ -12,6 +12,8 @@ public class SwagUtil {
 
     pw.println("<head>");
 
+    pw.println("<meta charset='UTF-8'>");
+
     pw.println("<style type=\'text/css\'>");
     pw.println("td {");
     pw.println("border: 1px solid #CCCCCC");
