@@ -43,4 +43,12 @@
 		<servlet-name>main</servlet-name>
 		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>delete</servlet-name>
+		<servlet-class>com.google.classroom.chapter1.study.servlet.project.DeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>delete</servlet-name>
+		<url-pattern>/delete.do</url-pattern>
+	</servlet-mapping>
 </web-app>
