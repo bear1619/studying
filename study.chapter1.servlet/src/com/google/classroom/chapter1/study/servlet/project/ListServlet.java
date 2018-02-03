@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.classroom.chapter1.study.util.SwagUtil;
+
 public class ListServlet extends HttpServlet {
 
 	@Override
@@ -22,15 +24,16 @@ public class ListServlet extends HttpServlet {
 		// 結果を返す
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter pw = response.getWriter();
-		pw.println("<html>");
-		pw.println("<head></head>");
+		SwagUtil.createCommonHeader(pw);
 		pw.println("<body>");
-		pw.println("<table border='1' cellspacing='0'>");
+		pw.println("<table>");
 		pw.println("<tr>");
 		pw.println("<th>ID</th>");
 		pw.println("<th>姓</th>");
 		pw.println("<th>名</th>");
 		pw.println("<th>eメール</th>");
+		pw.println("<th>削除</th>");
+		pw.println("<th>修正</th>");
 		pw.println("</tr>");
 		pw = selectMember(pw);
 		pw.println("</body>");
@@ -66,6 +69,8 @@ public class ListServlet extends HttpServlet {
 				    pw.println("<td>" + family_name + "</td>");
 				    pw.println("<td>" + given_name + "</td>");
 				    pw.println("<td>" + email + "</td>");
+				    pw.println("<td><a href='delete.do?id='" + id  + ">Delete</a></td>");
+				    pw.println("<td><a href='update.do?id='" + id  + ">Update</a></td>");
 				    pw.println("</tr>");
 				} while (rs.next());
 			} else {
