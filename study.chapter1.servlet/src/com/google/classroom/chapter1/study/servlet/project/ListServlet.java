@@ -69,8 +69,8 @@ public class ListServlet extends HttpServlet {
           pw.println("<td>" + familyName + "</td>");
           pw.println("<td>" + givenName + "</td>");
           pw.println("<td>" + email + "</td>");
-          pw.println("<td><a href='delete.do?id=" + id + "'>Delete</a></td>");
-          pw.println("<td><a href='update.do?id=" + id + "'>Update</a></td>");
+          pw.println("<td><a href='delete.do?id='" + id + ">Delete</a></td>");
+          pw.println("<td><a href='update.do?id='" + id + ">Update</a></td>");
           pw.println("</tr>");
         } while (rs.next());
       } else {
