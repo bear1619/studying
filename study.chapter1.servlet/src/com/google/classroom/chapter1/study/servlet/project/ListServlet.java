@@ -46,31 +46,31 @@ public class ListServlet extends HttpServlet {
     ResultSet rs = null;
     String sql;
     String jdbcUrl = "jdbc:mysql://localhost:3306/testdb";
-    String databaseId = "test";
-    String databasePw = "1234";
+    String databaseID = "test";
+    String databasePW = "1234";
     try {
       Class.forName("com.mysql.jdbc.Driver");
     } catch (ClassNotFoundException e) {
       System.out.println("Class not found : " + e);
     }
     try {
-      connection = DriverManager.getConnection(jdbcUrl, databaseId, databasePw);
+      connection = DriverManager.getConnection(jdbcUrl, databaseID, databasePW);
       statement = connection.createStatement();
       sql = "SELECT * FROM MEMBER";
       rs = statement.executeQuery(sql);
       if (rs.next()) {
         do {
           String id = rs.getString("ID");
-          String familyName = rs.getString("family_name");
-          String givenName = rs.getString("given_name");
+          String family_name = rs.getString("family_name");
+          String given_name = rs.getString("given_name");
           String email = rs.getString("email");
           pw.println("<tr>");
           pw.println("<td>" + id + "</td>");
-          pw.println("<td>" + familyName + "</td>");
-          pw.println("<td>" + givenName + "</td>");
+          pw.println("<td>" + family_name + "</td>");
+          pw.println("<td>" + given_name + "</td>");
           pw.println("<td>" + email + "</td>");
-          pw.println("<td><a href='delete.do?id=" + id + "'>Delete</a></td>");
-          pw.println("<td><a href='update.do?id=" + id + "'>Update</a></td>");
+          pw.println("<td><a href='delete.do?id='" + id + ">Delete</a></td>");
+          pw.println("<td><a href='update.do?id='" + id + ">Update</a></td>");
           pw.println("</tr>");
         } while (rs.next());
       } else {
