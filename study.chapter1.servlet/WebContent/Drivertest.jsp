@@ -10,7 +10,7 @@
   try{
         String jdbcUrl= "jdbc:mysql://localhost:3306/testdb" ;
         String dbId="test";
-        String dbPass= "1234";
+        String dbPass= "123456789s";
 
         Class.forName("com.mysql.jdbc.Driver");
         conn=DriverManager.getConnection(jdbcUrl,dbId ,dbPass );
