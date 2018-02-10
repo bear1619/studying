@@ -13,7 +13,7 @@ public class MainServlet extends HttpServlet{
         resp.setContentType("text/html; charset=UTF-8");
 
         PrintWriter out = resp.getWriter();
-        out.println("<html><headD><title>Main</title></head>");
+        out.println("<html><head><title>Main</title></head>");
         out.println("<body>");
         out.println("<ul>");
         out.println("<li><a href='register.html'>会員登録</a></li>");
